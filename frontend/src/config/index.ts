@@ -1,4 +1,4 @@
-const backendDomain = process.env.REACT_APP_BACKEND_DOMAIN || 'http://localhost';
+const backendDomain = window.location.origin;
 const backendEndpoint = '/api/v1';
 const backendURL = backendDomain + backendEndpoint;
 

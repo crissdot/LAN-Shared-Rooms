@@ -1,7 +1,5 @@
 FROM node:18-alpine
 
-ARG REACT_APP_BACKEND_DOMAIN
-
 WORKDIR /frontend
 
 COPY package*.json .

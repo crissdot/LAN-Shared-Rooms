@@ -7,14 +7,11 @@ services:
     environment:
       - PORT=80
       - BACKEND_DOMAIN=${BACKEND_DOMAIN}
-      - FRONTEND_DOMAIN=${FRONTEND_DOMAIN}
 
   frontend:
     container_name: lan-shared-rooms-app-container
     build:
       context: ./frontend
-      args:
-        - REACT_APP_BACKEND_DOMAIN=${BACKEND_DOMAIN}
     depends_on:
       - backend
     environment:
