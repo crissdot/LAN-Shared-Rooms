@@ -11,7 +11,7 @@ const app: Express = express();
 
 app.use(express.json());
 
-const whitelist = [config.BACKEND_DOMAIN, 'http://localhost'];
+const whitelist = [config.BACKEND_DOMAIN, 'http://localhost:9998', 'http://localhost'];
 const options: CorsOptions = {
   origin: (requestOrigin, callback) => {
     if(!requestOrigin || whitelist.includes(requestOrigin)) {
