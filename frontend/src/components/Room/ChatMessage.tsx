@@ -13,7 +13,6 @@ const ChatMessageListItem = styled.li`
   width: fit-content;
   min-width: 235px;
   width: 50%;
-  max-width: 90%;
   min-height: 2rem;
   margin: 0.5rem;
   background-color: ${props => props.theme.colors.alternative};
