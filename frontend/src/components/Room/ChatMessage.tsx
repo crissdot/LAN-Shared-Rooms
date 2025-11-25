@@ -5,6 +5,7 @@ import { IFetchedPost, IFilePost } from '../../types/IPost';
 import { DarkNormalText } from '../StyledComponents/Texts';
 import { SVG } from '../StyledComponents/SVG';
 import { TransparentButton } from '../StyledComponents/Button';
+import { ALink } from '../StyledComponents/Link';
 
 const ChatMessageListItem = styled.li`
   display: flex;
@@ -108,12 +109,27 @@ const ChatMessage = ({post}: Props) => {
     return null;
   }
 
+  const getMessageContent = () => {
+    if (!!message) {
+      try {
+        new URL(message);
+        return <ALink href={message} target='_blank'>{message}</ALink>;
+      } catch (_) {
+        return <DarkNormalText>{message}</DarkNormalText>;
+      }
+    }
+    
+    if (filePosts.length === 0) {
+      return null;
+    }
+
+    return <DarkNormalText>{`${filePosts.length} file${filePosts.length === 1 ? '' : 's'} inside`}</DarkNormalText>;
+  }
+
   return (
     <ChatMessageListItem>
       <ChatMessageListItemTextContainer>
-        <DarkNormalText>
-          {message ? message : `${filePosts.length} file${filePosts.length === 1 ? '' : 's'} inside`}
-        </DarkNormalText>
+        {getMessageContent()}
         {filePosts.length > 0 && (
           <TransparentButton onClick={onClickToggleShowFiles}>
             <ToggleSVG xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" showFiles={showFiles} >
